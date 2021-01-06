@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+      <link rel="stylesheet" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
