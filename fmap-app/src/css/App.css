@@ -1,5 +1,7 @@
 body {
   background-color: #282c34;
+
+  overflow: hidden;
 }
 
 .markercluster-map { height: 100vh; }
