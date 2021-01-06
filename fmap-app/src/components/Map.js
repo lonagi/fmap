@@ -1,8 +1,32 @@
-import {MapContainer, Marker, TileLayer} from "react-leaflet";
+import {MapContainer, Marker, TileLayer, Popup} from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import React, {Component} from 'react';
+import {APITOKEN} from './API';
 
 class Map extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            coords: []
+        };
+
+        var data = new FormData();
+        data.append("token",APITOKEN);
+
+        fetch("https://api.lonagi.pw/fwifi.php" , {
+            method: 'POST',
+            body: data
+        }).then( x => {
+            return x.json()
+        }).then(y => {
+            y.map((t=> (
+                this.setState({
+                    coords: this.state.coords.concat([t])
+                })
+            )))
+        });
+    }
+
     render() {
         return (
             <div>
