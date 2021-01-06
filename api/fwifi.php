@@ -2,6 +2,7 @@
 //header('Access-Control-Allow-Origin: market.drones-c.com');
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json; charset=utf-8');
+require "fdb.php";
 
 if(isset($_POST['token']))
 {
@@ -12,7 +13,6 @@ if(isset($_POST['token']))
 else 
 die("suc");
 
-require "fdb.php";
 R::selectDatabase("fsociety");
 $output = [];
 $fwifi = R::findAll("fwifi");
