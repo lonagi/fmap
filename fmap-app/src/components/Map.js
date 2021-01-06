@@ -28,7 +28,8 @@ class Map extends Component {
     }
 
     render() {
-        return (
+        const coords = this.state.coords;
+         return (
             <div>
                 <MapContainer
                     className="markercluster-map"
@@ -41,9 +42,13 @@ class Map extends Component {
                         attribution='&copy; fsociety Vopilov'
                     />
                     <MarkerClusterGroup>
-                        <Marker position={[49.8397, 24.0297]} />
-                        <Marker position={[52.2297, 21.0122]} />
-                        <Marker position={[51.5074, -0.0901]} />
+                        {coords.map(({ x, y ,login, psw}, index) => (
+                            <Marker position={[x, y]} key={index}>
+                                <Popup>
+                                    {login}<br/>{psw}
+                                </Popup>
+                            </Marker>
+                        ))}
                     </MarkerClusterGroup>;
                 </MapContainer>;
             </div>
